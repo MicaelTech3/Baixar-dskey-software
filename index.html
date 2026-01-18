@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DSKEY Software - Download & Manual</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #0f111a 0%, #1a1c24 100%);
+            color: #e0e0e0;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        header {
+            text-align: center;
+            padding: 40px 20px;
+            border-bottom: 2px solid #2c2f3a;
+            margin-bottom: 40px;
+        }
+
+        h1 {
+            font-size: 2.5em;
+            color: #1ec6ff;
+            margin-bottom: 10px;
+            text-shadow: 0 0 20px rgba(30, 198, 255, 0.3);
+        }
+
+        .subtitle {
+            color: #888;
+            font-size: 1.1em;
+        }
+
+        .download-section {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+
+        .download-card {
+            background: #1a1c24;
+            border: 2px solid #2c2f3a;
+            border-radius: 12px;
+            padding: 30px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .download-card:hover {
+            transform: translateY(-5px);
+            border-color: #1ec6ff;
+            box-shadow: 0 10px 30px rgba(30, 198, 255, 0.2);
+        }
+
+        .os-icon {
+            font-size: 4em;
+            margin-bottom: 20px;
+        }
+
+        .download-card h2 {
+            color: #1ec6ff;
+            margin-bottom: 15px;
+            font-size: 1.8em;
+        }
+
+        .download-btn {
+            display: inline-block;
+            background: linear-gradient(135deg, #1ec6ff 0%, #1a9fd9 100%);
+            color: #000;
+            padding: 15px 40px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.1em;
+            margin-top: 20px;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(30, 198, 255, 0.3);
+        }
+
+        .download-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 25px rgba(30, 198, 255, 0.5);
+        }
+
+        .manual-section {
+            background: #1a1c24;
+            border: 2px solid #2c2f3a;
+            border-radius: 12px;
+            padding: 40px;
+            margin-bottom: 40px;
+        }
+
+        .manual-section h2 {
+            color: #1ec6ff;
+            font-size: 2em;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .step {
+            background: #0f111a;
+            border-left: 4px solid #1ec6ff;
+            padding: 20px;
+            margin-bottom: 25px;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .step:hover {
+            background: #1a1c24;
+            transform: translateX(5px);
+        }
+
+        .step-number {
+            display: inline-block;
+            background: #1ec6ff;
+            color: #000;
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 35px;
+            font-weight: bold;
+            margin-right: 15px;
+            font-size: 1.2em;
+        }
+
+        .step h3 {
+            display: inline-block;
+            color: #1ec6ff;
+            font-size: 1.3em;
+            margin-bottom: 10px;
+        }
+
+        .step p {
+            margin-top: 15px;
+            line-height: 1.8;
+            color: #ccc;
+            padding-left: 50px;
+        }
+
+        .warning {
+            background: #2a1f1a;
+            border-left: 4px solid #ff6b6b;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 8px;
+        }
+
+        .warning::before {
+            content: "⚠ ";
+            color: #ff6b6b;
+            font-size: 1.3em;
+            margin-right: 10px;
+        }
+
+        .tip {
+            background: #1a2a1f;
+            border-left: 4px solid #51cf66;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 8px;
+        }
+
+        .tip::before {
+            content: "💡 ";
+            font-size: 1.3em;
+            margin-right: 10px;
+        }
+
+        .requirements {
+            background: #1a1c24;
+            border: 2px solid #2c2f3a;
+            border-radius: 12px;
+            padding: 30px;
+            margin-bottom: 40px;
+        }
+
+        .requirements h3 {
+            color: #1ec6ff;
+            margin-bottom: 20px;
+            font-size: 1.5em;
+        }
+
+        .requirements ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .requirements li {
+            padding: 10px 0;
+            padding-left: 30px;
+            position: relative;
+        }
+
+        .requirements li::before {
+            content: "✓";
+            color: #51cf66;
+            position: absolute;
+            left: 0;
+            font-weight: bold;
+            font-size: 1.3em;
+        }
+
+        footer {
+            text-align: center;
+            padding: 30px;
+            color: #666;
+            border-top: 2px solid #2c2f3a;
+            margin-top: 60px;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2em;
+            }
+
+            .download-section {
+                grid-template-columns: 1fr;
+            }
+
+            .step p {
+                padding-left: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>DSKEY Software</h1>
+            <p class="subtitle">Gerenciador Profissional para TV Box Android</p>
+        </header>
+
+        <section class="download-section">
+            <div class="download-card">
+                <div class="os-icon">🪟</div>
+                <h2>Windows</h2>
+                <p>Versão executável para Windows 10/11</p>
+                <a href="winds/dskeyWinds.exe" class="download-btn" download>
+                    ↓ Download Windows
+                </a>
+            </div>
+
+            <div class="download-card">
+                <div class="os-icon">🐧</div>
+                <h2>Linux</h2>
+                <p>Script Python para distribuições Linux</p>
+                <a href="linux/dskey" class="download-btn" download>
+                    ↓ Download Linux
+                </a>
+            </div>
+        </section>
+
+        <section class="requirements">
+            <h3>📋 Requisitos Necessários</h3>
+            <ul>
+                <li>Cabo USB para conectar o computador à TV Box</li>
+                <li>TV Box Android com modo desenvolvedor habilitado</li>
+                <li>Conexão estável entre PC e TV Box</li>
+                <li>Drivers USB instalados (geralmente automático no Windows)</li>
+            </ul>
+        </section>
+
+        <section class="manual-section">
+            <h2>📖 Manual de Uso Completo</h2>
+
+            <div class="step">
+                <span class="step-number">1</span>
+                <h3>Conectar o Cabo USB</h3>
+                <p>
+                    Conecte um cabo USB entre seu computador e a TV Box. Certifique-se de que o cabo 
+                    suporta transferência de dados (não apenas carregamento). A TV Box deve estar ligada.
+                </p>
+            </div>
+
+            <div class="step">
+                <span class="step-number">2</span>
+                <h3>Habilitar Modo Desenvolvedor</h3>
+                <p>
+                    Na TV Box, vá em <strong>Configurações</strong> → <strong>Sobre</strong> (ou "Sobre o dispositivo").
+                    Procure por <strong>"Versão"</strong> (pode ser "Versão do Android", "Número da compilação" ou similar).
+                    Toque rapidamente várias vezes (cerca de 7 vezes) na versão até aparecer uma mensagem 
+                    "Você agora é um desenvolvedor!".
+                </p>
+                <div class="warning">
+                    <strong>Atenção:</strong> Dependendo da versão do Android ou da marca da TV Box, 
+                    a localização pode variar. Procure em "Sistema", "Informações do dispositivo" ou similar.
+                    Em alguns modelos, pode estar em "Configurações avançadas".
+                </div>
+            </div>
+
+            <div class="step">
+                <span class="step-number">3</span>
+                <h3>Habilitar Depuração USB (ADB)</h3>
+                <p>
+                    Após ativar o modo desenvolvedor, volte para <strong>Configurações</strong> e procure por 
+                    <strong>"Opções do desenvolvedor"</strong> ou <strong>"Opções de desenvolvedor"</strong>.
+                    Dentro desse menu, ative:
+                </p>
+                <ul style="margin-left: 50px; margin-top: 10px; color: #ccc;">
+                    <li>✓ Depuração USB (ou "USB debugging")</li>
+                    <li>✓ Depuração USB (Configurações de segurança) - se disponível</li>
+                </ul>
+                <div class="tip">
+                    <strong>Dica:</strong> Ao conectar o cabo USB, aparecerá um popup na TV pedindo para 
+                    "Permitir depuração USB". Marque "Sempre permitir neste computador" e clique em "OK" ou "Aceitar".
+                </div>
+            </div>
+
+            <div class="step">
+                <span class="step-number">4</span>
+                <h3>Abrir o DSKEY Software</h3>
+                <p>
+                    Execute o programa DSKEY no seu computador. O software detectará automaticamente 
+                    a TV Box conectada. Na parte inferior da tela, você verá o status:
+                    <strong style="color: #51cf66;">DEVICE: [ID do dispositivo]</strong> em verde quando conectado.
+                </p>
+                <div style="text-align: center; margin-top: 20px;">
+                    <img src="img.software/aonde esta device.png" alt="Status do dispositivo" style="max-width: 100%; border-radius: 8px; border: 2px solid #2c2f3a;">
+                </div>
+            </div>
+
+            <div class="step">
+                <span class="step-number">5</span>
+                <h3>Baixar o DSKEY APK</h3>
+                <p>
+                    No menu lateral (ícone ☰ no canto superior esquerdo), clique em 
+                    <strong>"↓ Baixar DSKEY"</strong>. Isso abrirá o site oficial para download do APK.
+                    Salve o arquivo <strong>DSKEY.apk</strong> em seu computador.
+                </p>
+                <div style="text-align: center; margin-top: 20px;">
+                    <img src="img.software/menu.PNG" alt="Menu lateral" style="max-width: 100%; border-radius: 8px; border: 2px solid #2c2f3a; margin-bottom: 15px;">
+                    <img src="img.software/para baixar.png" alt="Baixar DSKEY" style="max-width: 100%; border-radius: 8px; border: 2px solid #2c2f3a;">
+                </div>
+            </div>
+
+            <div class="step">
+                <span class="step-number">6</span>
+                <h3>Instalar DSKEY na TV Box</h3>
+                <p>
+                    Na tela principal do software, clique no botão <strong>"Instalar DSKEY"</strong>.
+                    Selecione o arquivo APK que você baixou no passo anterior. Aguarde a instalação 
+                    ser concluída. Uma notificação verde confirmará: "DSKEY instalado".
+                </p>
+                <div style="text-align: center; margin-top: 20px;">
+                    <img src="img.software/depois de baixar.png" alt="Selecionar APK" style="max-width: 100%; border-radius: 8px; border: 2px solid #2c2f3a; margin-bottom: 15px;">
+                   
+            </div>
+
+            <div class="step">
+                <span class="step-number">7</span>
+                <h3>Ativar DSKEY</h3>
+                <p>
+                    Após a instalação, clique no botão <strong>"Ativar DSKEY"</strong> na tela principal.
+                    Isso irá:
+                </p>
+                <ul style="margin-left: 50px; margin-top: 10px; color: #ccc;">
+                    <li>✓ Ativar o aplicativo DSKEY</li>
+                    <li>✓ Definir o DSKEY como launcher padrão</li>
+                    <li>✓ Desativar o launcher original da TV Box</li>
+                </ul>
+                <p style="margin-top: 15px;">
+                    Pronto! O DSKEY agora está funcionando como interface principal da sua TV Box.
+                </p>
+                <div style="text-align: center; margin-top: 20px;">
+                    <img src="icon.png" alt="DSKEY Ativado" style="max-width: 200px; border-radius: 8px; border: 2px solid #2c2f3a;">
+                </div>
+            </div>
+
+            <div class="tip">
+                <strong>💡 Dicas Extras:</strong>
+                <ul style="margin-left: 20px; margin-top: 10px;">
+                    <li>Para restaurar o launcher original, use o botão "Restaurar Launcher"</li>
+                    <li>Use "🎮 Controle Remoto" no menu para controlar a TV via computador</li>
+                    <li>A opção "▸ Ativar TCP" permite conexão sem fio após a primeira conexão USB</li>
+                    <li>Use "⚙ Config da TV" para acessar configurações avançadas</li>
+                </ul>
+            </div>
+        </section>
+
+        <footer>
+            <p>DSKEY Software © 2024 | Versão 1.0.2</p>
+            <p>Ferramenta desenvolvida para gerenciamento profissional de TV Box Android</p>
+        </footer>
+    </div>
+</body>
+</html>
